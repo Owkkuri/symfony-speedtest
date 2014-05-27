@@ -1,0 +1,5 @@
+owkkuri_speedtest:
+    resource: "@OwkkuriSpeedtestBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

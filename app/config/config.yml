@@ -75,4 +75,12 @@ braincrafted_bootstrap:
     less_filter: less
     auto_configure:
         twig: true
+nelmio_solarium:
+    endpoints:
+        speedtestServers:
+            dsn: http://%solr_host%:%solr_port%/solr/speedtestServers
+            timeout: 5
+    clients:
+            default:
+                endpoints: [speedtestServers]
 

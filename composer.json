@@ -34,9 +34,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "solarium/solarium": "3.2.*",
         "nelmio/solarium-bundle": "2.*",
-        "braincrafted/bootstrap-bundle": "~2.0",
-        "twbs/bootstrap": "3.0.*",
-        "jquery/jquery":  "1.10.*",
+        "jquery/jquery":  "1.*",
         "knplabs/knp-menu": "2.0.*@dev",
         "knplabs/knp-menu-bundle": "2.0.*@dev"
     },

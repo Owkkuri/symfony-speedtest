@@ -1,0 +1,20 @@
+<dataConfig>
+    <document name="Servers">
+        <entity name="Server" pk="id"
+                query="SELECT `id`,
+       `url` as url_s,
+       `lat` as lat_coordinate,
+       `lon` as lon_coordinate,
+       `name` as name_s,
+       `country` as country_s,
+       `cc` as cc_s,
+       `sponsor` as sponsor_s,
+       `host` as host_s,
+       `url2` as host_s,
+       `serverId` as serverId_id
+FROM Server"
+                deltaImportQuery=""
+                deltaQuery="">
+        </entity>
+    </document>
+</dataConfig>

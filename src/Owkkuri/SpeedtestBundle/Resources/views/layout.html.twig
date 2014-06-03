@@ -6,13 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <!-- Bootstrap -->
-    <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet" media="screen">
+    {% block stylesheets %}
+        {% stylesheets filter='cssrewrite'
+        '@OwkkuriSpeedtestBundle/Resources/public/css/bootstrap.css'
+        '@OwkkuriSpeedtestBundle/Resources/public/css/bootstrap-theme.css'
+        '@OwkkuriSpeedtestBundle/Resources/public/css/otherstuff.css'
+        output='css/all.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}"/>
+        {% endstylesheets %}
+    {% endblock %}
 
     <!-- HTML5 Shim and Respond.js add IE8 support of HTML5 elements and media queries -->
-    {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
     {% block head %}{% endblock %}
 </head>
 <body>
+<style>
+
+</style>
 
 <div class="container">
     {% block content_header %}
@@ -46,6 +56,12 @@
                         {#</ul>#}
                         {#</li>#}
                     </ul>
+                    <form class="navbar-form navbar-left" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
                     <ul class="nav navbar-nav navbar-right">
 
                     </ul>
@@ -56,21 +72,72 @@
     {% endblock %}
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="well">
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="row">
+                <div class="col col-sm-12"><h2>Responsive</h2>
+
+                    <p>In simple terms, a responsive web design figures out what resolution of
+                        device it's being served on. Flexible grids then size correctly to fit
+                        the screen. Mobile-first Bootstrap 3 is responsive.</p></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-8"><h2>Lighweight</h2>
+
+                    <p>The new Bootstrap 3 is a smaller build. The separate Bootstrap
+                        base and responsive.css files have now been merged into one. There is no
+                        more fixed grid, only fluid.</p></div>
+                <div class="col-sm-4"><img class="img-responsive" src="//placehold.it/220x180/666666/FFF"></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-4"><img class="img-responsive" src="//placehold.it/220x180/777777/FFF"></div>
+                <div class="col-sm-8"><h2>Large, Small or Tiny</h2>
+
+                    <p>
+                        The new fluid grid comes in 3 flavors, or actually sizes. The large grid <code>col-lg-*</code>
+                        works exactly like the Bootstrap 2.x <code>span*</code> did.
+                        There is also a small grid that is realized using the <code>col-sm-*</code> classes. This
+                        smaller grid is ideal for smartphones and tablets.
+                        Finally, there is the non-stacking tiny grid <code>col-*</code> that is intended for very small
+                        screens less that 480px.
+                    </p></div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-8"><h2>A Playground</h2>
+
+                    <p>
+                        Bootply is a playground for Bootstrap. Designers and developers use Bootply to edit, design,
+                        prototype, test and find examples that use Bootstrap 3.
+                        Use Bootply to hand-code HTML, Javascript, CSS and drop in the Bootstrap classes. There is a
+                        also a visual drag-and-drop builder that is perfect for wire-framing and mockups.
+                    </p></div>
+                <div class="col-sm-4"><img class="img-responsive" src="//placehold.it/220x180/777777/FFF"></div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>
 
 <div class="container">
-    {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
-
-
     <div class="jumbotron">
         {% block content %}{% endblock %}
     </div>
 </div>
 {% block javascripts %}
-    <!-- jQuery (necessary for Bootstraps JavaScript plugins) -->
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <!-- Include all JavaScripts, compiled by Assetic -->
-    <script src="{{ asset('js/bootstrap.js') }}"></script>
-
+    {% javascripts
+    '@OwkkuriSpeedtestBundle/Resources/public/js/jquery-1.11.1.js'
+    '@OwkkuriSpeedtestBundle/Resources/public/js/bootstrap.js'
+    output='js/all.js' %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
 {% endblock %}
 </body>
 </html>

@@ -19,13 +19,6 @@ class DefaultController extends Controller
         $select->setQuery('*:*');
         $results = $client->select($select);
 
-        $flash = $this->get('braincrafted_bootstrap.flash');
-        $flash->alert('This is an alert flash message.');
-        $flash->error('This is an error flash message.');
-        $flash->info('This is an info flash message.');
-        $flash->success('This is an success flash message.');
-
-
         return array('name' => $name);
     }
 }

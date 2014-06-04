@@ -1,7 +1,13 @@
 {% extends "OwkkuriSpeedtestBundle::layout.html.twig" %}
 
-{% block title "Symfony - Demos" %}
+{% block title "Solr - Demos" %}
+
+{% block facets %}
+    {% include "OwkkuriSpeedtestBundle:Default:facet.html.twig" with {'facets':facets} %}
+{% endblock %}
 
 {% block content %}
- {{ name }}
+    {% for result in docs %}
+        {% include "OwkkuriSpeedtestBundle:Default:result.html.twig" with {'result':result} %}
+    {% endfor %}
 {% endblock %}

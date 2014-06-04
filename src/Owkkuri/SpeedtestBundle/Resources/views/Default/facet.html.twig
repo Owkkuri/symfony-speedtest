@@ -1,0 +1,9 @@
+{% if facets is not empty %}
+<div class="well">
+    <ul class="nav nav-pills nav-stacked">
+    {% for facet in facets %}
+        <li><a href="?search={{ facet.label|upper }}">{{ facet.label|upper }} ({{ facet.count }})</a></li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}

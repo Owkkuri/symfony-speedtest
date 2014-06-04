@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col col-sm-12">
+        <h2>{{ result.sponsor_s }}</h2>
+
+        <ul class="list-group">
+            {% if result.country_s is defined %}
+                <li class="list-group-item">Country: {{ result.country_s }}</li>
+            {% endif %}
+            {% if result.name_s is defined %}
+                <li class="list-group-item">Location: {{ result.name_s }}</li>
+            {% endif %}
+            {% if result.cc_s is defined %}
+                <li class="list-group-item">Country Code: {{ result.cc_s }}</li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

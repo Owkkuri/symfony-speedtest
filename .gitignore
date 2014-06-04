@@ -16,3 +16,4 @@
 /.idea/
 
 solr/speedtestServers/data
+solr/speedtestServers/conf/dataimport.properties

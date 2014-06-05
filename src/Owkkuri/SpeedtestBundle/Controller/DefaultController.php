@@ -33,21 +33,28 @@ class DefaultController extends Controller
         // get a select query instance
         $query = $client->createSelect();
 
+        //Enable edismax, more natural searching
         $edismax = $query->getEDisMax();
         $edismax->setQueryFields('name_s cc_s sponsor_s country_s');
 
 
-
+        //Set the term we're looking for, defaults to '*:*'
         $query->setQuery($term);
+
+        //Set the limit
         $query->setRows(5);
 
+        //Create a facet set for the left nav
         $facetSet = $query->getFacetSet();
 
         $facetSet->createFacetField('countrycode')->setField('cc_s');
         $facetSet->createFacetField('sponsor')->setField('sponsor_s');
         $facetSet->setLimit(10);
+
+        //exclude 0 facets1
         $facetSet->setMinCount(1);
 
+        //Get the result set
         $resultset = $client->select($query);
 
         $docs = array();

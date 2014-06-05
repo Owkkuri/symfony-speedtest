@@ -20,12 +20,15 @@ class DefaultController extends Controller
     {
         /* @var $client Client */
 
+        //Get the POST/GET search param
         $term = $request->get('search','*:*');
 
+        //If the term is empty, default to search all
         if(empty($term)) {
             $term = '*:*';
         }
 
+        //Magic starts here
         $client = $this->get('solarium.client');
         // get a select query instance
         $query = $client->createSelect();
@@ -41,6 +44,7 @@ class DefaultController extends Controller
         $facetSet = $query->getFacetSet();
 
         $facetSet->createFacetField('countrycode')->setField('cc_s');
+        $facetSet->createFacetField('sponsor')->setField('sponsor_s');
         $facetSet->setLimit(10);
         $facetSet->setMinCount(1);
 
@@ -54,6 +58,13 @@ class DefaultController extends Controller
             $facets[$value]['count'] = $count;
             $facets[$value]['label'] = $value;
         }
+
+        $morefacets = array();
+//        $morefacet = $resultset->getFacetSet()->getFacet('sponsor');
+//        foreach ($morefacet as $value => $count) {
+//            $morefacets[$value]['count'] = $count;
+//            $morefacets[$value]['label'] = $value;
+//        }
 
         foreach ($resultset as $document) {
 
@@ -73,6 +84,6 @@ class DefaultController extends Controller
         }
 
 
-        return array('docs' => $docs, 'numfound' => $resultset->getNumFound(), 'facets' => $facets);
+        return array('docs' => $docs, 'numfound' => $resultset->getNumFound(), 'facets' => $facets, 'morefacets' => $morefacets);
     }
 }
